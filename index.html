@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cotizador</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
+</head>
+<body>
+    <h1>Cotizador</h1>
+    <input type="text" id="productSearch" placeholder="Buscar producto por nombre" oninput="searchProduct()">
+    <div id="products">
+        <div class="product" id="escobaProduct" data-name="escoba" data-code="101" data-price="3500">
+            <label for="escoba">Escoba (3,500 COP) - Disponible: <span id="escobaStock">5</span> unidades: </label>
+            <input type="number" id="escoba" value="0" min="0" max="5" oninput="checkStock('escoba', 5)">
+            <span id="escobaError" class="error"></span>
+            <br>
+            <label for="escobaCost">Costo: </label>
+            <input type="text" id="escobaCost" value="0" readonly> COP
+        </div>
+        <div class="product" id="traperoProduct" data-name="trapero" data-code="102" data-price="4750">
+            <label for="trapero">Trapero (4,750 COP) - Disponible: <span id="traperoStock">3</span> unidades: </label>
+            <input type="number" id="trapero" value="0" min="0" max="3" oninput="checkStock('trapero', 3)">
+            <span id="traperoError" class="error"></span>
+            <br>
+            <label for="traperoCost">Costo: </label>
+            <input type="text" id="traperoCost" value="0" readonly> COP
+        </div>
+        <div class="product" id="recogedorProduct" data-name="recogedor" data-code="103" data-price="2800">
+            <label for="recogedor">Recogedor (2,800 COP) - Disponible: <span id="recogedorStock">8</span> unidades: </label>
+            <input type="number" id="recogedor" value="0" min="0" max="8" oninput="checkStock('recogedor', 8)">
+            <span id="recogedorError" class="error"></span>
+            <br>
+            <label for="recogedorCost">Costo: </label>
+            <input type="text" id="recogedorCost" value="0" readonly> COP
+        </div>
+        <div class="product" id="bolsasAseoProduct" data-name="bolsas aseo" data-code="104" data-price="1940">
+            <label for="bolsasAseo">Bolsas Aseo (1,940 COP) - Disponible: <span id="bolsasAseoStock">20</span> unidades: </label>
+            <input type="number" id="bolsasAseo" value="0" min="0" max="20" oninput="checkStock('bolsasAseo', 20)">
+            <span id="bolsasAseoError" class="error"></span>
+            <br>
+            <label for="bolsasAseoCost">Costo: </label>
+            <input type="text" id="bolsasAseoCost" value="0" readonly> COP
+        </div>
+        <div class="product" id="guantesLimpiezaProduct" data-name="guantes limpieza" data-code="105" data-price="3910">
+            <label for="guantesLimpieza">Guantes Limpieza (3,910 COP) - Disponible: <span id="guantesLimpiezaStock">4</span> unidades: </label>
+            <input type="number" id="guantesLimpieza" value="0" min="0" max="4" oninput="checkStock('guantesLimpieza', 4)">
+            <span id="guantesLimpiezaError" class="error"></span>
+            <br>
+            <label for="guantesLimpiezaCost">Costo: </label>
+            <input type="text" id="guantesLimpiezaCost" value="0" readonly> COP
+        </div>
+        <div class="product" id="limpionesProduct" data-name="limpiones" data-code="106" data-price="3600">
+            <label for="limpiones">Limpiones (3,600 COP) - Disponible: <span id="limpionesStock">34</span> unidades: </label>
+            <input type="number" id="limpiones" value="0" min="0" max="34" oninput="checkStock('limpiones', 34)">
+            <span id="limpionesError" class="error"></span>
+            <br>
+            <label for="limpionesCost">Costo: </label>
+            <input type="text" id="limpionesCost" value="0" readonly> COP
+        </div>
+        <div class="product" id="limpiavidriosProduct" data-name="limpiavidrios" data-code="260" data-price="7500">
+            <label for="limpiavidrios">Limpiavidrios (7,500 COP) - Disponible: <span id="limpiavidriosStock">9</span> unidades: </label>
+            <input type="number" id="limpiavidrios" value="0" min="0" max="9" oninput="checkStock('limpiavidrios', 9)">
+            <span id="limpiavidriosError" class="error"></span>
+            <br>
+            <label for="limpiavidriosCost">Costo: </label>
+            <input type="text" id="limpiavidriosCost" value="0" readonly> COP
+        </div>
+        <div class="product" id="limpiapisosProduct" data-name="limpiapisos" data-code="263" data-price="6540">
+            <label for="limpiapisos">Limpiapisos (6,540 COP) - Disponible: <span id="limpiapisosStock">9</span> unidades: </label>
+            <input type="number" id="limpiapisos" value="0" min="0" max="9" oninput="checkStock('limpiapisos', 9)">
+            <span id="limpiapisosError" class="error"></span>
+            <br>
+            <label for="limpiapisosCost">Costo: </label>
+            <input type="text" id="limpiapisosCost" value="0" readonly> COP
+        </div>
+        <div class="product" id="lavalosaProduct" data-name="lavalosa" data-code="266" data-price="4900">
+            <label for="lavalosa">Lavalosa (4,900 COP) - Disponible: <span id="lavalosaStock">3</span> unidades: </label>
+            <input type="number" id="lavalosa" value="0" min="0" max="3" oninput="checkStock('lavalosa', 3)">
+            <span id="lavalosaError" class="error"></span>
+            <br>
+            <label for="lavalosaCost">Costo: </label>
+            <input type="text" id="lavalosaCost" value="0" readonly> COP
+        </div>
+        <div class="product" id="lavaropaProduct" data-name="lavaropa" data-code="301" data-price="23710">
+            <label for="lavaropa">Lavaropa (23,710 COP) - Disponible: <span id="lavaropaStock">7</span> unidades: </label>
+            <input type="number" id="lavaropa" value="0" min="0" max="7" oninput="checkStock('lavaropa', 7)">
+            <span id="lavaropaError" class="error"></span>
+            <br>
+            <label for="lavaropaCost">Costo: </label>
+            <input type="text" id="lavaropaCost" value="0" readonly> COP
+        </div>
+        <div class="product" id="suavizanteProduct" data-name="suavizante" data-code="304" data-price="18980">
+            <label for="suavizante">Suavizante (18,980 COP) - Disponible: <span id="suavizanteStock">1</span> unidades: </label>
+            <input type="number" id="suavizante" value="0" min="0" max="1" oninput="checkStock('suavizante', 1)">
+            <span id="suavizanteError" class="error"></span>
+            <br>
+            <label for="suavizanteCost">Costo: </label>
+            <input type="text" id="suavizanteCost" value="0" readonly> COP
+        </div>
+        <div class="product" id="ambientalizadorProduct" data-name="ambientalizador" data-code="471" data-price="13630">
+            <label for="ambientalizador">Ambientalizador (13,630 COP) - Disponible: <span id="ambientalizadorStock">3</span> unidades: </label>
+            <input type="number" id="ambientalizador" value="0" min="0" max="3" oninput="checkStock('ambientalizador', 3)">
+            <span id="ambientalizadorError" class="error"></span>
+            <br>
+            <label for="ambientalizadorCost">Costo: </label>
+            <input type="text" id="ambientalizadorCost" value="0" readonly> COP
+        </div>
+        <div class="product" id="shampooProduct" data-name="shampoo" data-code="477" data-price="6340">
+            <label for="shampoo">Shampoo (6,340 COP) - Disponible: <span id="shampooStock">17</span> unidades: </label>
+            <input type="number" id="shampoo" value="0" min="0" max="17" oninput="checkStock('shampoo', 17)">
+            <span id="shampooError" class="error"></span>
+            <br>
+            <label for="shampooCost">Costo: </label>
+            <input type="text" id="shampooCost" value="0" readonly> COP
+        </div>
+    </div>
+    <button onclick="calculateTotal()">Calcular total</button>
+    <h2>Total: <span id="total">0</span> COP</h2>
+
+    
+</body>
+</html>
